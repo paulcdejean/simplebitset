@@ -1,5 +1,10 @@
 [package]
 name = "simplebitset"
+description = "Dead simple Rust bitset"
+license = "MIT"
+homepage = "https://github.com/paulcdejean/simplebitset"
+repository = "https://github.com/paulcdejean/simplebitset"
+readme = "README.md"
 version = "0.1.0"
 edition = "2024"
 
