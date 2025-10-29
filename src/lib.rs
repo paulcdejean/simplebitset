@@ -1,15 +1,26 @@
 mod bitset;
 mod contains;
 mod debug;
+mod difference;
+mod extend;
+mod from_iter;
 mod get;
 mod insert;
 mod intersection;
+mod into_iter;
+mod is_disjoint;
+mod is_empty;
+mod is_subset;
+mod is_superset;
+mod iter;
 mod len;
 mod memes;
 mod new;
-mod take;
-mod is_empty;
 mod remove;
 mod replace;
+mod retain;
+mod symmetric_difference;
+mod take;
+mod union;
 
 pub use bitset::BitSet;
