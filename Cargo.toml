@@ -7,5 +7,6 @@ repository = "https://github.com/paulcdejean/simplebitset"
 readme = "README.md"
 version = "0.1.0"
 edition = "2024"
+keywords = ["bitset"]
 
 [dependencies]
