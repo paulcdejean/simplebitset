@@ -9,7 +9,7 @@ impl Iterator for IntoIter {
             if self.0[i] != 0 {
                 let trailing_zeros: u8 = self.0[i].trailing_zeros() as u8;
                 self.0[i] &= self.0[i] - 1u64;
-                return Some(trailing_zeros);
+                return Some(trailing_zeros + i as u8 * 64);
             }
         }
         None
@@ -22,5 +22,21 @@ impl IntoIterator for BitSet {
 
     fn into_iter(self) -> Self::IntoIter {
         IntoIter(self.0)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_iter() {
+        let example: BitSet = BitSet::total_set();
+        let mut n: usize = 0;
+        for bit in example {
+            assert_eq!(bit as usize, n);
+            n += 1;
+        }
+        assert_eq!(n, 256);
     }
 }

@@ -5,6 +5,10 @@ impl BitSet {
     pub fn new() -> Self {
         Self([0; 4])
     }
+    /// Creates a new bitset that contains every u8 value.
+    pub fn total_set() -> Self {
+        Self([u64::MAX ; 4])
+    }
 }
 
 impl Default for BitSet {
