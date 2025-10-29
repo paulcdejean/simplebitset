@@ -8,7 +8,7 @@ pub struct Iter<'a> {
 impl Iterator for Iter<'_> {
     type Item = u8;
     fn next(&mut self) -> Option<Self::Item> {
-        while self.index < u8::MAX {
+        while self.index <= u8::MAX {
             if self.bitset.contains(self.index) {
                 let result: u8 = self.index;
                 self.index += 1;
@@ -37,5 +37,21 @@ impl<'a> IntoIterator for &'a BitSet {
 
     fn into_iter(self) -> Self::IntoIter {
         self.iter()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_borrow_iter() {
+        let example: BitSet = BitSet::total_set();
+        let mut n: usize = 0;
+        for bit in example.iter() {
+            assert_eq!(bit as usize, n);
+            n += 1;
+        }
+        assert_eq!(n, 256);
     }
 }
