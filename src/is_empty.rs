@@ -1,0 +1,12 @@
+use crate::bitset::BitSet;
+
+impl BitSet {
+    /// Returns true if the set contains no elements.
+    pub fn is_empty(&self) -> bool {
+        let mut result: u64 = 0;
+        for bits in self.0 {
+            result &= bits;
+        }
+        result == 0
+    }
+}
