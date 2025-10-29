@@ -22,6 +22,7 @@ impl Iterator for Iter<'_> {
 }
 
 impl BitSet {
+    /// An iterator visiting all elements in ascending order. 
     pub fn iter(&self) -> Iter<'_> {
         Iter {
             bitset: self,
