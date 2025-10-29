@@ -2,22 +2,13 @@ use crate::bitset::BitSet;
 
 pub struct Iter<'a> {
     bitset: &'a BitSet,
-    index: u8,
+    indices: core::ops::RangeInclusive<u8>,
 }
 
 impl Iterator for Iter<'_> {
     type Item = u8;
     fn next(&mut self) -> Option<Self::Item> {
-        while self.index <= u8::MAX {
-            if self.bitset.contains(self.index) {
-                let result: u8 = self.index;
-                self.index += 1;
-                return Some(result);
-            } else {
-                self.index += 1;
-            }
-        }
-        None
+        self.indices.by_ref().find(|&x| self.bitset.contains(x))
     }
 }
 
@@ -26,7 +17,7 @@ impl BitSet {
     pub fn iter(&self) -> Iter<'_> {
         Iter {
             bitset: self,
-            index: 0,
+            indices: core::ops::RangeInclusive::new(0, u8::MAX),
         }
     }
 }
