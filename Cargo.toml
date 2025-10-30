@@ -10,3 +10,8 @@ edition = "2024"
 keywords = ["bitset"]
 
 [dependencies]
+
+[features]
+default = ["copy"]
+# Determines if BitSet implements Copy or not.
+copy = []

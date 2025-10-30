@@ -17,8 +17,8 @@ pub fn main() {
     println!("7 = {}", example.contains(7));
     println!("8 = {}", example.contains(8));
     println!("9 = {}", example.contains(9));
+    dbg!(&example);
     for n in example {
         dbg!(n);
     }
-    dbg!(example);
 }

@@ -4,7 +4,8 @@ impl BitSet {
     /// Retains only the elements specified by the predicate.
     /// In other words, remove all elements e for which f(&e) returns false. The elements are visited in unsorted (and unspecified) order.
     pub fn retain<F: FnMut(u8) -> bool>(&mut self, mut f: F) {
-        let iter_set: BitSet = *self;
+        #[allow(clippy::clone_on_copy)] // Copy is an optional feature!
+        let iter_set: BitSet = self.clone();
         for bit in iter_set {
             if !f(bit) {
                 self.remove(bit);
