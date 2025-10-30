@@ -7,3 +7,9 @@ impl std::iter::Extend<u8> for BitSet {
         }
     }
 }
+
+impl<'a> std::iter::Extend<&'a u8> for BitSet {
+    fn extend<T: IntoIterator<Item = &'a u8>>(&mut self, iter: T) {
+        self.extend(iter.into_iter().cloned())
+    }
+}
