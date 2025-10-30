@@ -47,4 +47,16 @@ impl BitSet {
             }
         }
     }
+
+    /// This version of insert is much fewer instructions, but seems to struggle in benchmarks.
+    /// You're free to use it, especially if it performs faster in your own benchmarks.
+    pub fn insert_v2(&mut self, value: u8) -> bool {
+        let index: u8 = value / 64;
+        let offset: u8 = value % 64;
+        let num: &mut u64 = &mut self.0[usize::from(index)];
+        let mask: u64 = 1 << offset;
+        let is_inserted: bool = (*num & mask) == 0;
+        *num |= mask;
+        is_inserted
+    }
 }
