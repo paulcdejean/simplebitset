@@ -23,5 +23,6 @@ mod retain;
 mod symmetric_difference;
 mod take;
 mod union;
+mod drain;
 
 pub use bitset::BitSet;
