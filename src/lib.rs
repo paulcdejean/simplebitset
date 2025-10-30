@@ -2,6 +2,7 @@ mod bitset;
 mod contains;
 mod debug;
 mod difference;
+mod drain;
 mod extend;
 mod extract_if;
 mod from_iter;

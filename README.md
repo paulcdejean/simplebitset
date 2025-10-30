@@ -6,8 +6,6 @@ Attempts to match the interface of `std::collections::HashSet` with some excepti
 
 ### HashSet methods not implemented for simple BitSet
 
-* `extract_if`: I should have implemented this but it was late and I was getting tired.
-* `drain`: The spec of this is a headache. I can try to add this if someone requests it.
 * `get_or_insert_with`: The sepc of this is a headache. I can try to add this if someone requests it.
 * `entry`: Unneeded becuase u8 is Copy.
 * `hasher`: Nonsensical since this is not a hash set.
