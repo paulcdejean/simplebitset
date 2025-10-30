@@ -9,7 +9,7 @@ fn many_inserts() {
     let mut bs: BitSet = black_box(BitSet::new());
     for _ in 0..1_00 {
         for z in 0..255 {
-            black_box(bs.insert(black_box(z)));
+            black_box(black_box(&mut bs).insert(black_box(z)));
         }
     }
 }
@@ -17,7 +17,7 @@ fn many_inserts() {
 fn insert_vec(input: &Vec<u8>) {
     let mut bs: BitSet = black_box(BitSet::new());
     for element in input {
-        black_box(bs.insert(*element));
+        black_box(black_box(&mut bs).insert(*element));
     }
 }
 
