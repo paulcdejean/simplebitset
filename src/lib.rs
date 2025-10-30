@@ -2,6 +2,7 @@ mod bitset;
 mod contains;
 mod debug;
 mod difference;
+mod drain;
 mod extend;
 mod extract_if;
 mod from_iter;
@@ -23,6 +24,5 @@ mod retain;
 mod symmetric_difference;
 mod take;
 mod union;
-mod drain;
 
 pub use bitset::BitSet;

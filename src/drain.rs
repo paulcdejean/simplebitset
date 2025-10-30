@@ -6,7 +6,7 @@ use crate::bitset::BitSet;
 pub type Drain = crate::into_iter::IntoIter;
 
 impl BitSet {
-    /// Clears the set, returning all elements as an iterator. 
+    /// Clears the set, returning all elements as an iterator.
     pub fn drain(&mut self) -> Drain {
         std::mem::take(self).into_iter()
     }
