@@ -1,5 +1,6 @@
 use crate::bitset::BitSet;
 
+/// A consuming iterator over the items of a BitSet.
 pub struct IntoIter([u64; 4]);
 
 impl Iterator for IntoIter {

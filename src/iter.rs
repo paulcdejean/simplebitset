@@ -1,5 +1,6 @@
 use crate::bitset::BitSet;
 
+/// A borrowing iterator over the items of a BitSet.
 pub struct Iter<'a> {
     bitset: &'a BitSet,
     indices: core::ops::RangeInclusive<u8>,
