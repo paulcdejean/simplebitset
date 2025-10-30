@@ -3,6 +3,7 @@ mod contains;
 mod debug;
 mod difference;
 mod extend;
+mod extract_if;
 mod from_iter;
 mod get;
 mod insert;
