@@ -1,5 +1,5 @@
 use criterion::{Criterion, criterion_group, criterion_main};
-use std::hint::black_box;
+use core::hint::black_box;
 
 use simplebitset::BitSet;
 

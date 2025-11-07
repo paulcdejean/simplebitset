@@ -1,3 +1,5 @@
+#![cfg_attr(not(test), no_std)]
+
 //! # Simple BitSet
 //! Basically a `HashSet<u8>` but faster. Even though for a HashSet operations run in O(1) time, for a T that has a limited number of possible
 //! values, there's faster approaches than hashing. A BitSet works by storing each element in a single bit, then using very fast bitwise

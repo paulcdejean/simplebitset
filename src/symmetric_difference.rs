@@ -1,10 +1,10 @@
 use crate::bitset::BitSet;
-use std::ops::BitXor;
+use core::ops::BitXor;
 
 impl BitSet {
     /// Returns a new bitset that is the intersection of self and other.
     pub fn symmetric_difference(&self, other: &Self) -> Self {
-        BitSet(std::array::from_fn(|i| self.0[i] ^ other.0[i]))
+        BitSet(core::array::from_fn(|i| self.0[i] ^ other.0[i]))
     }
 }
 
@@ -13,7 +13,7 @@ impl BitXor for BitSet {
 
     /// Returns a new bitset that is the intersection of self and other.
     fn bitxor(self, rhs: Self) -> Self::Output {
-        BitSet(std::array::from_fn(|i| self.0[i] ^ rhs.0[i]))
+        BitSet(core::array::from_fn(|i| self.0[i] ^ rhs.0[i]))
     }
 }
 
@@ -22,6 +22,6 @@ impl BitXor for &BitSet {
 
     /// Returns a new bitset that is the intersection of self and other.
     fn bitxor(self, rhs: Self) -> Self::Output {
-        BitSet(std::array::from_fn(|i| self.0[i] ^ rhs.0[i]))
+        BitSet(core::array::from_fn(|i| self.0[i] ^ rhs.0[i]))
     }
 }
