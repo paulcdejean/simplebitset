@@ -8,8 +8,11 @@
 //! Simple BitSet is an implementation of BitSet that is purposefully not generic. It only stores u8s. This means less and easier to read
 //! code, and it allows optimization work to be more focused.
 //!
+//! For storage BitSet uses 256 bits, more specifically a `[u64; 4]`. This allows all single byte values to be stored.
+//! By default for convenience bitset is Copy, but this can be changed via feature flags.
+//!
 //! If your use case involves some type that can be represented internally in a single byte, such as a enum with Repr u8, or ASCII chars,
-//! and you wish to use Simple BitSet, then I'd recommend you make a Newtype.
+//! and you wish to use Simple BitSet, then I'd recommend you make a Newtype of bitset.
 //!
 //! If you need to store a type that has more than 256 possible values, this crate isn't a good match for that use case.
 //!
