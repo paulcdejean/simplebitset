@@ -1,5 +1,5 @@
-use criterion::{Criterion, criterion_group, criterion_main};
 use core::hint::black_box;
+use criterion::{Criterion, criterion_group, criterion_main};
 
 use simplebitset::BitSet;
 
