@@ -27,7 +27,3 @@ harness = false
 [[bench]]
 name = "contains"
 harness = false
-
-[[bench]]
-name = "discord"
-harness = false
