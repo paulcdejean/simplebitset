@@ -28,3 +28,6 @@ harness = false
 name = "contains"
 harness = false
 
+[[bench]]
+name = "discord"
+harness = false

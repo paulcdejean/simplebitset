@@ -22,4 +22,13 @@ impl BitSet {
             }
         }
     }
+
+    /// Returns true if the set contains a value.
+    pub fn contains_v2(&self, value: u8) -> bool {
+        let index: u8 = value / 64;
+        let offset: u8 = value % 64;
+        let num: u64 = self.0[usize::from(index)];
+        let mask: u64 = 1 << offset;
+        (num & mask) != 0
+    }
 }
