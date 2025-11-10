@@ -11,15 +11,15 @@ impl BitSet {
     pub fn insert_blind_branching(&mut self, value: u8) {
         match value {
             0..=63 => {
-                let nth: u64 = 1 << (value - 192);
+                let nth: u64 = 1 << value;
                 self.0[0] |= nth;
             }
             64..=127 => {
-                let nth: u64 = 1 << (value - 192);
+                let nth: u64 = 1 << (value - 64);
                 self.0[1] |= nth;
             }
             128..=191 => {
-                let nth: u64 = 1 << (value - 192);
+                let nth: u64 = 1 << (value - 128);
                 self.0[2] |= nth;
             }
             192..=255 => {
@@ -38,25 +38,27 @@ impl BitSet {
     }
 }
 
-fn insert_vec_branching(input: &Vec<u8>) {
+fn insert_vec_branching(input: &Vec<u8>) -> BitSet {
     let mut bs: BitSet = BitSet::new();
     for element in input {
         bs.insert_blind_branching(*element);
     }
+    bs
 }
 
-fn insert_vec_branchless(input: &Vec<u8>) {
+fn insert_vec_branchless(input: &Vec<u8>) -> BitSet {
     let mut bs: BitSet = BitSet::new();
     for element in input {
         bs.insert_blind_branchless(*element);
     }
+    bs
 }
 
 fn criterion_benchmark(c: &mut Criterion) {
     let mut rng = rand::rng();
     let mut input: Vec<u8> = Vec::new();
 
-    for _ in 0..200 {
+    for _ in 0..300 {
         input.push(rng.random::<u8>());
     }
 
@@ -64,14 +66,14 @@ fn criterion_benchmark(c: &mut Criterion) {
         BenchmarkId::new("insert rand vec branching", "200 random numbers"),
         &input,
         |b, i| {
-            b.iter(|| insert_vec_branching(&i));
+            b.iter(|| insert_vec_branching(&i))
         },
     );
     c.bench_with_input(
         BenchmarkId::new("insert rand vec branchless", "200 random numbers"),
         &input,
         |b, i| {
-            b.iter(|| insert_vec_branchless(&i));
+            b.iter(|| insert_vec_branchless(&i))
         },
     );
 }
