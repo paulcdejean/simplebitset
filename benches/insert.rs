@@ -29,16 +29,12 @@ fn criterion_benchmark(c: &mut Criterion) {
     c.bench_with_input(
         BenchmarkId::new("insert rand vec branching", "200 random numbers"),
         &input,
-        |b, i| {
-            b.iter(|| insert_vec_branching(&i))
-        },
+        |b, i| b.iter(|| insert_vec_branching(&i)),
     );
     c.bench_with_input(
         BenchmarkId::new("insert rand vec branchless", "200 random numbers"),
         &input,
-        |b, i| {
-            b.iter(|| insert_vec_branchless(&i))
-        },
+        |b, i| b.iter(|| insert_vec_branchless(&i)),
     );
 }
 
