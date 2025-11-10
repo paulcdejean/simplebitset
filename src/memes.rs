@@ -14,4 +14,12 @@ impl BitSet {
         self.insert(value);
         value
     }
+    /// Adds a value to the set, replacing the existing value, if any, that is equal to the given one. Returns the replaced value.
+    pub fn replace(&mut self, value: u8) -> Option<u8> {
+        if self.insert(value) {
+            return None
+        } else {
+            return Some(value)
+        }
+    }
 }

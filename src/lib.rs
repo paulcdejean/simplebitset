@@ -40,7 +40,6 @@ mod len;
 mod memes;
 mod new;
 mod remove;
-mod replace;
 mod retain;
 mod symmetric_difference;
 mod take;
