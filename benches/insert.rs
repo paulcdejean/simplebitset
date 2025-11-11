@@ -2,14 +2,6 @@ use criterion::{BenchmarkId, Criterion, criterion_group, criterion_main};
 use rand::prelude::*;
 use simplebitset::BitSet;
 
-fn insert_vec_branching(input: &Vec<u8>) -> BitSet {
-    let mut bs: BitSet = BitSet::new();
-    for element in input {
-        bs.insert_old(*element);
-    }
-    bs
-}
-
 fn insert_vec_branchless(input: &Vec<u8>) -> BitSet {
     let mut bs: BitSet = BitSet::new();
     for element in input {
@@ -25,12 +17,6 @@ fn criterion_benchmark(c: &mut Criterion) {
     for _ in 0..300 {
         input.push(rng.random::<u8>());
     }
-
-    c.bench_with_input(
-        BenchmarkId::new("insert rand vec branching", "200 random numbers"),
-        &input,
-        |b, i| b.iter(|| insert_vec_branching(&i)),
-    );
     c.bench_with_input(
         BenchmarkId::new("insert rand vec branchless", "200 random numbers"),
         &input,
