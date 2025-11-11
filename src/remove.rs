@@ -3,43 +3,32 @@ use crate::bitset::BitSet;
 impl BitSet {
     /// Removes a value from the set. Returns whether the value was present in the set.
     pub fn remove(&mut self, value: u8) -> bool {
-        match value {
-            0..=63 => {
-                let nth: u64 = 1 << value;
-                if nth & self.0[0] == 0 {
-                    false
-                } else {
-                    self.0[0] &= !nth;
-                    true
-                }
-            }
-            64..=127 => {
-                let nth: u64 = 1 << (value - 64);
-                if nth & self.0[1] == 0 {
-                    false
-                } else {
-                    self.0[1] &= !nth;
-                    true
-                }
-            }
-            128..=191 => {
-                let nth: u64 = 1 << (value - 128);
-                if nth & self.0[2] == 0 {
-                    false
-                } else {
-                    self.0[2] &= !nth;
-                    true
-                }
-            }
-            192..=255 => {
-                let nth: u64 = 1 << (value - 192);
-                if nth & self.0[3] == 0 {
-                    false
-                } else {
-                    self.0[3] &= !nth;
-                    true
-                }
-            }
+        let index: u8 = value / 64;
+        let offset: u8 = value % 64;
+        // SAFETY: a u8 divided by 64 is between 0 and 3. MIR doesn't know this though.
+        let num: &mut u64 = unsafe { self.0.get_unchecked_mut(index as usize) };
+        let mask: u64 = 1 << offset;
+        if *num & mask == 0 {
+            false
+        } else {
+            *num &= !mask;
+            true
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_remove_all_from_totalset() {
+        let mut example: BitSet = BitSet::total_set();
+        for n in 0u8..=255u8 {
+            assert!(example.contains(n));
+            assert!(example.remove(n));
+            assert!(!example.remove(n));
+            assert!(!example.contains(n));
         }
     }
 }
