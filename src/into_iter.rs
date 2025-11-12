@@ -1,5 +1,6 @@
-use crate::bitset::BitSet;
 use crate::bitset::BITSET_ARRAY_SIZE;
+use crate::bitset::BitSet;
+use crate::bitset::USIZE_BITS;
 
 /// A consuming iterator over the items of a BitSet.
 pub struct IntoIter([usize; BITSET_ARRAY_SIZE]);
@@ -11,7 +12,7 @@ impl Iterator for IntoIter {
             if self.0[i] != 0 {
                 let trailing_zeros: u8 = self.0[i].trailing_zeros() as u8;
                 self.0[i] &= self.0[i] - 1usize;
-                return Some(trailing_zeros + i as u8 * 64);
+                return Some(trailing_zeros + i as u8 * USIZE_BITS);
             }
         }
         None

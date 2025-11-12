@@ -1,5 +1,5 @@
-use crate::bitset::BitSet;
 use crate::bitset::BITSET_ARRAY_SIZE;
+use crate::bitset::BitSet;
 
 impl BitSet {
     /// Clears the set, removing all values.

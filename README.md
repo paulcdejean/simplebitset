@@ -1,6 +1,6 @@
 # Simple BitSet
 
-A dead simple bitset. Not generic at all, it only stores u8s and nothing else. For its underlying storage it uses a `[usize; 4]`
+A dead simple bitset. Not generic at all, it only stores u8s and nothing else. For its underlying storage it uses 256 bits.
 
 Attempts to match the interface of `std::collections::HashSet` with some exceptions.
 

@@ -1,4 +1,5 @@
 use crate::bitset::BitSet;
+use crate::bitset::USIZE_BITS;
 
 impl BitSet {
     /// Adds a value to the set.
@@ -9,8 +10,8 @@ impl BitSet {
     /// - If the set already contained this value, `false` is returned.
     #[inline] // Required because MIR doesn't know u8::MAX / 4 is between 0 and 3.
     pub fn insert(&mut self, value: u8) -> bool {
-        let index: u8 = value / 64;
-        let offset: u8 = value % 64;
+        let index: u8 = value / USIZE_BITS;
+        let offset: u8 = value % USIZE_BITS;
         let num: &mut usize = self.0.get_mut(index as usize).unwrap();
         let mask: usize = 1 << offset;
         if *num & mask == 0 {

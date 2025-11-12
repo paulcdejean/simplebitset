@@ -1,4 +1,5 @@
 pub(crate) const BITSET_ARRAY_SIZE: usize = ((u8::MAX as u32 + 1) / usize::BITS) as usize;
+pub(crate) const USIZE_BITS: u8 = usize::BITS as u8;
 
 /// A simple BitSet is like a `HashMap<u8>` except much much faster. The interface is very similar to HashMap.
 /// Whether or not it implements `Copy` can be toggled with a feature.
