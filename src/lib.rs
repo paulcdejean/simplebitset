@@ -18,8 +18,10 @@
 //!
 //! ### Features
 //! * `copy` - Enabled by default. Causes BitSet to implement the Copy trait.
+//! * `compatibility-methods` - Disabled by default. Include methods that don't do anything other than improve compatability with HashMap<u8>.
 
 mod bitset;
+mod clear;
 mod contains;
 mod debug;
 mod difference;
@@ -28,6 +30,7 @@ mod extend;
 mod extract_if;
 mod from_iter;
 mod get;
+mod get_or_insert;
 mod insert;
 mod intersection;
 mod into_iter;
@@ -37,13 +40,16 @@ mod is_subset;
 mod is_superset;
 mod iter;
 mod len;
-mod memes;
 mod new;
 mod remove;
+mod replace;
 mod retain;
 mod symmetric_difference;
 mod take;
 mod union;
+
+// #[cfg(feature = "compatibility-methods")]
+mod compatibility;
 
 pub use bitset::BitSet;
 pub use into_iter::IntoIter;

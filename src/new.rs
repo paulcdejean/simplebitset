@@ -14,6 +14,6 @@ impl BitSet {
 impl Default for BitSet {
     /// An empty bitset.
     fn default() -> Self {
-        Self([0; 4])
+        Self::new()
     }
 }

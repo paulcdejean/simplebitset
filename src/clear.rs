@@ -1,0 +1,8 @@
+use crate::bitset::BitSet;
+
+impl BitSet {
+    /// Clears the set, removing all values.
+    pub fn clear(&mut self) {
+        self.0 = [0; 4]
+    }
+}

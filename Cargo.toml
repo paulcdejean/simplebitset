@@ -7,6 +7,7 @@ repository = "https://github.com/paulcdejean/simplebitset"
 readme = "README.md"
 version = "0.3.0"
 edition = "2024"
+resolver = "3"
 keywords = ["bitset"]
 
 [dependencies]
@@ -15,6 +16,8 @@ keywords = ["bitset"]
 default = ["copy"]
 # Determines if BitSet implements Copy or not.
 copy = []
+# Determines if noop methods for compatibility with hashmap are enabled.
+compatibility-methods = []
 
 [dev-dependencies]
 criterion = "0.7.0"

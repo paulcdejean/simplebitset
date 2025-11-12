@@ -6,13 +6,17 @@ Attempts to match the interface of `std::collections::HashSet` with some excepti
 
 ### HashSet methods not implemented for simple BitSet
 
-* `get_or_insert_with`: The sepc of this is a headache. I can try to add this if someone requests it.
-* `entry`: Unneeded becuase u8 is Copy.
-* `hasher`: Nonsensical since this is not a hash set.
-* `reserve`: Nonsensical since the bitset has a fixed size of 256.
-* `shrink_to`: Nonsensical since the bitset has a fixed size of 256.
-* `shrink_to_fit`: Nonsensical since the bitset has a fixed size of 256.
-* `try_reserve`: Nonsensical since the bitset has a fixed size of 256.
-* `with_capacity`: Nonsensical since the bitset has a fixed size of 256.
-* `with_hasher`: Nonsensical since this is not a hash set.
-* `with_capacity_and_hasher`: See above.
+* `get_or_insert_with`: Low priority TODO.
+* `entry`: Medium priority TODO.
+* `hasher`: Won't be implemented. No sane way to implement this.
+
+### HashSet methods that are behind the `compatibility-methods` feature
+
+* `capacity`: Just returns `256usize`.
+* `reserve`: Does nothing.
+* `shrink_to`: Does nothing.
+* `shrink_to_fit`: Does nothing.
+* `try_reserve`: Returns `Ok(())`.
+* `with_capacity`: Same behavior as `new()` just returns an empty BitSet.
+* `with_hasher`: Same behavior as `new()` just returns an empty BitSet. Note that hasher parameter can be any type.
+* `with_capacity_and_hasher`: Same behavior as `new()` just returns an empty bitset. Note that hasher parameter can be any type.
