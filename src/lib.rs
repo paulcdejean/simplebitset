@@ -29,8 +29,8 @@ mod drain;
 mod extend;
 mod extract_if;
 mod from_iter;
-mod get;
 mod get_or_insert;
+mod get;
 mod insert;
 mod intersection;
 mod into_iter;
@@ -46,6 +46,7 @@ mod replace;
 mod retain;
 mod symmetric_difference;
 mod take;
+mod total_set;
 mod union;
 
 // #[cfg(feature = "compatibility-methods")]
