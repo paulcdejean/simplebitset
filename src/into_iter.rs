@@ -1,7 +1,8 @@
 use crate::bitset::BitSet;
+use crate::bitset::BITSET_ARRAY_SIZE;
 
 /// A consuming iterator over the items of a BitSet.
-pub struct IntoIter([u64; 4]);
+pub struct IntoIter([u64; BITSET_ARRAY_SIZE]);
 
 impl Iterator for IntoIter {
     type Item = u8;

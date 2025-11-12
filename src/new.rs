@@ -1,9 +1,10 @@
+use crate::bitset::BITSET_ARRAY_SIZE;
 use crate::bitset::BitSet;
 
 impl BitSet {
     /// Creates a new empty bitset.
     pub fn new() -> Self {
-        Self([0; 4])
+        Self([0; BITSET_ARRAY_SIZE])
     }
 }
 
