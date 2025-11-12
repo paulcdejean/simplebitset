@@ -6,8 +6,8 @@ impl BitSet {
     pub fn contains(&self, value: u8) -> bool {
         let index: u8 = value / 64;
         let offset: u8 = value % 64;
-        let num: u64 = self.0[index as usize];
-        let mask: u64 = 1 << offset;
+        let num: usize = self.0[index as usize];
+        let mask: usize = 1 << offset;
         (num & mask) != 0
     }
 }

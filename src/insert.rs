@@ -11,8 +11,8 @@ impl BitSet {
     pub fn insert(&mut self, value: u8) -> bool {
         let index: u8 = value / 64;
         let offset: u8 = value % 64;
-        let num: &mut u64 = self.0.get_mut(index as usize).unwrap();
-        let mask: u64 = 1 << offset;
+        let num: &mut usize = self.0.get_mut(index as usize).unwrap();
+        let mask: usize = 1 << offset;
         if *num & mask == 0 {
             *num |= mask;
             true

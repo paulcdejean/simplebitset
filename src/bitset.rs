@@ -4,4 +4,4 @@ pub(crate) const BITSET_ARRAY_SIZE: usize = ((u8::MAX as u32 + 1) / usize::BITS)
 /// Whether or not it implements `Copy` can be toggled with a feature.
 #[derive(PartialEq, Eq, Clone, Hash)]
 #[cfg_attr(feature = "copy", derive(Copy))]
-pub struct BitSet(pub(crate) [u64; BITSET_ARRAY_SIZE]);
+pub struct BitSet(pub(crate) [usize; BITSET_ARRAY_SIZE]);
