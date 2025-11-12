@@ -2,11 +2,11 @@ use crate::bitset::BitSet;
 
 impl BitSet {
     /// Removes a value from the set. Returns whether the value was present in the set.
+    #[inline] // Required because MIR doesn't know u8::MAX / 4 is between 0 and 3.
     pub fn remove(&mut self, value: u8) -> bool {
         let index: u8 = value / 64;
         let offset: u8 = value % 64;
-        // SAFETY: a u8 divided by 64 is between 0 and 3. MIR doesn't know this though.
-        let num: &mut u64 = unsafe { self.0.get_unchecked_mut(index as usize) };
+        let num: &mut u64 = self.0.get_mut(index as usize).unwrap();
         let mask: u64 = 1 << offset;
         if *num & mask == 0 {
             false

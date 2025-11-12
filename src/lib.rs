@@ -1,4 +1,5 @@
 #![cfg_attr(not(test), no_std)]
+#![forbid(unsafe_code)]
 
 //! # Simple BitSet
 //! Basically a `HashSet<u8>` but faster. Even though for a HashSet operations run in O(1) time, for a T that has a limited number of possible
