@@ -34,3 +34,7 @@ harness = false
 [[bench]]
 name = "remove"
 harness = false
+
+[[bench]]
+name = "collect"
+harness = false
