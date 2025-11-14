@@ -23,10 +23,9 @@ Attempts to match the interface of `std::collections::HashSet` with some excepti
 
 ### FAQ
 
-**Q:** How does this compare to `HashSet<u8>`?
-**A:** Roughly 8x faster with an identical interface.
-**Q:** How does this compare to the `bit_set` crate?
-**A:** It seems simplebitset is maybe 30% faster than the `bit_set` crate. However `bit_set` can store up to usize bits, while simplebitset only stores 256 bits.
-**Q** How does this compare to the `bitvec` crate?
-**A** The `bitvec` create has a completely different interface from simplebitset's interface. This makes comparison challenging. Feel free to run your own comparisons though and let me know how it goes via github issue or something.
-
+* **Q:** How does this compare to `HashSet<u8>`?
+* **A:** Roughly 8x faster with an identical interface.
+* **Q:** How does this compare to the `bit_set` crate?
+* **A:** It seems simplebitset is maybe 30% faster than the `bit_set` crate. However `bit_set` can store up to usize bits, while simplebitset only stores 256 bits.
+* **Q** How does this compare to the `bitvec` crate?
+* **A** The `bitvec` create has a completely different interface from simplebitset's interface. This makes comparison challenging. Feel free to run your own comparisons though and let me know how it goes via github issue or something.
